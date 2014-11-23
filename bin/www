@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+var debug = require('debug')('ExpressAngularSeed');
+var app = require('../server/app');
+
+//This is to run end-to-end test on another port than the default development port
+
+var testPort = process.argv[2];
+if(testPort !==null ){
+  console.log("Express Server started for e2e-testing, listening on port: "+testPort);
+}
+app.set('port', process.env.PORT || testPort || 3000);
+
+var server = app.listen(app.get('port'), function() {
+  debug('Express server listening on port ' + server.address().port);
+});
+
+

@@ -1,0 +1,31 @@
+<p style="margin-top: 10px;">This seed shows a "typical" layout for an application that requires authentication and use
+  roles to distinguish
+  between what logged on users can do.</p>
+<ul>
+  <li><b>View1</b> Can be seen by all</li>
+  <li><b>Users Only</b> Access to data (REST) requires user to be logged on as a <em>user</em></li>
+  <li><b>Admins only</b> Access to data (REST) requires user to be logged on as <em>admin</em></li>
+</ul>
+<h3>Test Users: (logon with these credentials to test)</h3>
+<ul>
+  <li><b>Admin:</b> username = teacher, password = test</li>
+  <li><b>User:</b> username= student, password = test</li>
+</ul>
+<h2>Using the Security Features in this seed - <em>Server:</em></h2>
+<P>All REST services placed in the file REST_Admin_API.js requires admin rights</P>
+<p>All REST services placed in the file REST_User_API.js requires user rights</p>
+<p>Username, password, and roles are hardcoded in index.js (your task is to place this info "somewhere")</p>
+<h2>Using the Security Features in this seed - <em>Client</em>:</h2>
+<p>Logon/logof is ready to use.</p>
+<p>A token with credentials is automatically is attached to all outgoing AJAX requests (when you are logged on) </p>
+<p>In this version users can see all menu items (even if they do not have the necessary rights). This is for you to
+
+  observe when and where security takes place (bring up F12 in chrome and monitor the network traffic)<p>
+<p>You can hide elements so they are only visible with the required security role. Add <code>ng-show="isUser"</code> to
+  the "Users
+  Only" anchor tag in index.html and <code>ng-show="isAdmin"</code> on the "Admins Only" tag. To see this in action.</p>
+<p>Everything you do, that relates to security on the client, can be tampered with, so the trick above should be seen as
+  something to make the system more user friendly. <span style="text-decoration: underline">The real security is how REST (our data) is protected on the server. </span>
+  </p>
+<h3 style="color: darkred;"><em>Note: This seed is not meant for production. The most obvious flaw is that username and
+  password are sent unencrypted</em></h3>
