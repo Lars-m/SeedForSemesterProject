@@ -1,4 +1,5 @@
 global.TEST_DATABASE = "mongodb://localhost/TestDataBase_xx1243";
+global.SKIP_AUTHENTICATION = true;  //Skip security
 
 var should = require("should");
 var app = require("../../server/app");
@@ -11,6 +12,7 @@ var User = mongoose.model("User");
 describe('REST API for /user', function () {
   //Start the Server before the TESTS
   before(function (done) {
+
     testServer = app.listen(testPort, function () {
       console.log("Server is listening on: " + testPort);
       done();
@@ -37,7 +39,7 @@ describe('REST API for /user', function () {
   })
 
   it("Should get 2 users; Lars and Henrik", function (done) {
-    http.get("http://localhost:"+testPort+"/api/user",function(res){
+    http.get("http://localhost:"+testPort+"/adminApi/user",function(res){
       res.setEncoding("utf8");//response data is now a string
       res.on("data",function(chunk){
         var n = JSON.parse(chunk);

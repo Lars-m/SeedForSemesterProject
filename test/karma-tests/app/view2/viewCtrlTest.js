@@ -1,31 +1,22 @@
 describe('myAppRename.view2 view2Ctrl', function() {
 
-  describe('myController', function() {
-    var $scope;
+  var scope, httpBackendMock, ctrl;
+  var testResponse = {msg : "Test Message"};
 
-    beforeEach(module('myAppRename.view2'));
+  beforeEach(module('myAppRename.view2'));
 
-    //Mocks for the test
-    beforeEach(module({
-      InfoFactory: {
-        getInfo: function() {return  "Factory"; }
-      },
-      InfoService: {
-        getInfo: function() {return  "Service"; }
-      }
-    }));
+  beforeEach(inject(function ($httpBackend, $rootScope, $controller) {
+    httpBackendMock = $httpBackend;
+    httpBackendMock.expectGET('userApi/test').
+      respond(testResponse);
+    scope = $rootScope.$new();
+    ctrl = $controller('View2Ctrl', {$scope: scope});
+  }));
 
-    beforeEach(inject(function($rootScope, $controller) {
-      $scope = $rootScope.$new();
-      $controller('View2Ctrl', {$scope: $scope});
-    }));
-
-    it('Should have the value Factory', function () {
-      expect($scope.infoFactory).toBe('Factory');
-    });
-
-    it('Should have the value Service', function () {
-      expect($scope.infoService).toBe('Service');
-    });
+  it('Should fetch two names ', function () {
+    expect(scope.info).toBeUndefined();
+    httpBackendMock.flush();
+    expect(scope.info.msg).toEqual("Test Message");
   });
+
 });
