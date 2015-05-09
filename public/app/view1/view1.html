@@ -1,23 +1,23 @@
 <p style="margin-top: 10px;color:#105cb6;font-weight: bold">This seed shows a "typical" layout for an application that requires authentication and use
   roles to distinguish
-  between what logged on users can do.</p>
+  between what authenticated users can do.</p>
 <ul>
   <li><b style="display: inline-block;width:7em;" >View1</b> Can be seen by all</li>
   <li><b style="display: inline-block;width:7em;">Users Only</b> Access to data (REST) requires user to be logged on as a <em>user</em></li>
   <li><b style="display: inline-block;width:7em;">Admins only</b> Access to data (REST) requires user to be logged on as <em>admin</em></li>
 </ul>
-<h2>Test Users: (logon with these credentials to test)</h2>
+<h2>Test Users: (logon with these credentials to test authentication)</h2>
 <ul style="font-size: large">
-  <li><b style="display: inline-block;width:5em;">Admin:</b>username = teacher, password = test</li>
-  <li><b style="display: inline-block;width:5em;">User:</b>username = student, password = test</li>
+  <li><b style="display: inline-block;width:5em;">Admin:</b>username = admin1, password = test</li>
+  <li><b style="display: inline-block;width:5em;">User:</b>username = user1, password = test</li>
 </ul>
 <h2>Using the Security Features in this seed - <em>Server:</em></h2>
-<P>All REST services placed in the file REST_Admin_API.js requires admin rights</P>
-<p>All REST services placed in the file REST_User_API.js requires user rights</p>
+<P>All REST services placed in the <b>file:</b> <em>REST_Admin_API.js</em> requires admin rights</P>
+<p>All REST services placed in the <b>file:</b> <em>REST_User_API.js</em> requires user rights</p>
 <p>Username, password, and roles are hardcoded in index.js (your task is to place this info "somewhere")</p>
 <h2>Using the Security Features in this seed - <em>Client</em>:</h2>
 <p>Logon/logof is ready to use.</p>
-<p>A token with credentials is automatically is attached to all outgoing AJAX requests (when you are logged on) </p>
+<p>A token with credentials is automatically attached to all outgoing AJAX (REST)requests (when you are logged on) </p>
 <p>In this version users can see all menu items (even if they do not have the necessary rights). This is for you to
 
   observe when and where security takes place (bring up F12 in chrome and monitor the network traffic)<p>
@@ -29,5 +29,4 @@
   </p>
         <p>Security in this seed was inspired by this article <a href="https://auth0.com/blog/2014/01/07/angularjs-authentication-with-cookies-vs-token/">Cookies vs Tokens. Getting auth right with Angular.JS</a></p>
         <p><a href="https://stormpath.com/blog/secure-your-rest-api-right-way/">Secure Your REST API... The Right Way</a></p>
-<h3 style="color: darkred;"><em>Note: This seed is not meant for production. The most obvious flaw is that username and
-  password are sent unencrypted</em></h3>
+<h3 style="color: darkred;"><em>Note: This seed is not meant for production.</em></h3>

@@ -32,7 +32,7 @@
   "scripts": {
     "pretestserver": "npm install",
     "testserver": "node ./bin/www 12345",
-    "postinstall": "bower install",
+    "postinstall": "HOME=$HOME/app-root/runtime node node_modules/bower/bin/bower install",
     "prestart": "npm install",
     "start": "node ./bin/www",
     "prebackendtests": "npm install",

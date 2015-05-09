@@ -2,10 +2,6 @@ var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
 
-
-
-
-
 /* GET home page. */
 router.get('/', function(req, res) {
   res.redirect("app/index.html")
@@ -15,9 +11,9 @@ router.get('/', function(req, res) {
 router.post('/authenticate', function (req, res) {
   //TODO: Go and get UserName Password from "somewhere"
   //if is invalid, return 401
-   if (req.body.username === 'student' && req.body.password === 'test') {
+   if (req.body.username === 'user1' && req.body.password === 'test') {
     var profile = {
-      username: 'Bo the Student',
+      username: 'user1',
       role: "user",
       id: 1000
     };
@@ -27,9 +23,9 @@ router.post('/authenticate', function (req, res) {
     return;
   }
 
-  if (req.body.username === 'teacher' && req.body.password === 'test') {
+  if (req.body.username === 'admin1' && req.body.password === 'test') {
     var profile = {
-      username: 'Peter the Teacher',
+      username: 'admin1',
       role: "admin",
       id: 123423
     };
